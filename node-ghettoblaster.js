@@ -15,8 +15,10 @@ function GBlaster(path){
     events.EventEmitter.call(this);
 
     exec('mplayer', function(err, stdout, stdin){
-        if(err)
+        if(err) {
+            console.error(err);
             throw new Error("GBlaster encountered an error or isn't installed.");
+        }
     });
 };
 
