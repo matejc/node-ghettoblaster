@@ -28,6 +28,10 @@ GBlaster.prototype.play = function(opts, callback) {
     if (this.childProc !== null) return this.resume();             // The process is already running, we just resume the playing
     var args = ['-slave', '-quiet', '-idle', "-really-quiet", '-msglevel', 'statusline=6', '-msglevel', 'global=6', this.file];
 
+    if (opts.args) {
+        args = args.concat(opts.args);
+    }
+
     this.childProc = spawn('mplayer', args);
 
     if(typeof opts !== 'undefined'){
