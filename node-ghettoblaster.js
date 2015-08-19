@@ -73,7 +73,8 @@ GBlaster.prototype.write = function (cmd) {
 
 GBlaster.prototype.stop = function() {
     if(this.childProc !== null){
-        cp.exec("killall mplayer"); //Not really nice but works better than .kill('SIGINT')
+        //cp.exec("killall mplayer"); //Not really nice but works better than .kill('SIGINT')
+        this.childProc.kill();
         this.emit('stopped');
     }
 };
